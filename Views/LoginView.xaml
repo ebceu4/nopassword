@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="NoPassword.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:NoPassword.ViewModels"
+             d:DataContext="{d:DesignInstance viewModels:LoginViewModel}"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <StackPanel Margin="25">
+        <TextBlock Text="Login" />
+        <TextBox Text="{Binding Login}" />
+        <TextBlock Margin="0,10,0,0" Text="Password" />
+        <PasswordBox PasswordChanged="PasswordBoxOnPasswordChanged" />
+        <StackPanel Margin="0,70,-5,-5"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button MinWidth="80"
+                    Margin="5"
+                    cal:Message.Attach="DoLogin"
+                    Content="Ok" />
+            <Button MinWidth="80"
+                    Margin="5"
+                    Content="Cancel" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

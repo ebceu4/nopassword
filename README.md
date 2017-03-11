@@ -1,0 +1,2 @@
+# nopassword
+nopassword interview task

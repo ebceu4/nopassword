@@ -26,7 +26,7 @@ namespace NoPassword.General
             builder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
             builder.RegisterType<Navigation.Navigation>().As<INavigation>().SingleInstance();
             builder.RegisterType<EncryptedFileStorage>().As<IStorage>().SingleInstance();
-            builder.RegisterType<AesEncryption>().As<IEncryption>().SingleInstance();
+            builder.RegisterType<AesEncryptionWithRsaKeyEncryption>().As<IEncryption>().SingleInstance();
             //builder.RegisterType<BluetoothDeviceProvider>().As<IBluetoothDeviceProvider>().SingleInstance();
             builder.RegisterType<FakeBluetoothDeviceProvider>().As<IBluetoothDeviceProvider>().SingleInstance();
             builder.RegisterType<BluetoothDeviceWatcher>().As<IBluetoothDeviceWatcher>().SingleInstance();

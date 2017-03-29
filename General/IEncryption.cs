@@ -1,10 +1,8 @@
-﻿using System;
-using System.IO;
-
-namespace NoPassword.General
+﻿namespace NoPassword.General
 {
     public interface IEncryption
     {
-        void Encrypt(string value, Stream output);
+        EncryptedItem Encrypt(string value, string windowsKeystoreId);
+        string Decrypt(EncryptedItem item, string windowsKeystoreId);
     }
 }

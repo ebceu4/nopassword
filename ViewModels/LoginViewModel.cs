@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security;
+using System.Windows;
 using Caliburn.Micro;
 using NoPassword.General;
 using NoPassword.General.Navigation;
@@ -33,10 +34,26 @@ namespace NoPassword.ViewModels
 
             try
             {
-                _storage.Set(UserLogin, Login);
-                _storage.Set(UserPassword, Password?.ToString());
+                if (_storage.ContainsKey(UserLogin) && _storage.ContainsKey(UserPassword))
+                {
+                    var savedLogin = _storage.Get(UserLogin);
+                    var savedPassword = _storage.Get(UserPassword);
 
-                _navigation.NavigateToDeviceListScreen();
+                    if (savedLogin == Login && savedPassword == Password?.ToString())
+                    {
+                        _navigation.NavigateToDeviceListScreen();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong login/password pair.");
+                    }
+                }
+                else
+                {
+                    _storage.Set(UserLogin, Login);
+                    _storage.Set(UserPassword, Password?.ToString());
+                    _navigation.NavigateToDeviceListScreen();
+                }
             }
             catch (Exception ex)
             {
